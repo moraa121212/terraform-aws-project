@@ -25,6 +25,7 @@ Each component is built as an individual module to keep the configuration clean,
 - [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/)
 
 ## 📁Project Structure
+'''Bash
 
 terraform_project/
 ├── main.tf           # Root module calling submodules
@@ -37,7 +38,7 @@ terraform_project/
     ├── route-table/  # Route table and association module
     ├── SG/           # Security Group module
     └── ec2/          # EC2 instance module
-
+‘’’
 
 
 Each module is responsible for a specific component of the infrastructure, following a clean and reusable structure.
