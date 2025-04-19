@@ -1,13 +1,13 @@
 resource "aws_default_route_table" "public" {
   default_route_table_id = var.mora
   tags = {
-    Name = "iti-default-route-public"
+    Name = var.route_table_name
   }
 }
 resource "aws_route" "public_internet_gateway" {
   route_table_id         = aws_default_route_table.public.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             =  var.gateway
+  gateway_id             = var.gateway
   timeouts {
     create = "5m"
   }

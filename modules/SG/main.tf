@@ -20,11 +20,9 @@ resource "aws_security_group" "iTi_SG" {
   }
 
   tags = {
-    name = "iTi_SG"
+    name = var.sg_name
   }
 
 }
-output secgrp {
-  value       = aws_security_group.iTi_SG.id
-}
+
 
