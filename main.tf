@@ -49,7 +49,7 @@ module "route_table" {
 
 module "ec2" {
   source              = "./modules/ec2"
-  ami                 = "ami-052efd3df9dad4825"
+  ami                 = "ami-0e449927258d45bc4"
   instance-type       = "t2.micro"
   subnet_id           = module.subnet.subnet_id
   secgrp              = module.SG.secgrp
