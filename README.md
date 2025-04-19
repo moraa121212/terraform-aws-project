@@ -5,7 +5,7 @@
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazon-aws&logoColor=white&style=for-the-badge)
 
 ## 📌Description
-___________________________________________________________________________________________________
+
 This project uses **Terraform** to automate the provisioning of AWS infrastructure.  
 The setup includes a fully functional environment with:
 - A Virtual Private Cloud (VPC)
@@ -25,23 +25,25 @@ Each component is built as an individual module to keep the configuration clean,
 - [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/)
 
 ## 📁Project Structure
-__________________________________________________________________________________________________________________
+
 terraform_project/
-├── main.tf            # Root module calling submodules
-├── provider.tf        # AWS provider config
+├── main.tf           # Root module calling submodules
+├── provider.tf       # AWS provider configuration
+├── README.md         # README file explaining how to use the project
 └── modules/
-    ├── vpc/           # VPC module
-    ├── subnet/        # Subnet module
-    ├── IGW/           # Internet Gateway module
-    ├── route-table/   # Route table and association
-    ├── SG/            # Security Group module
-    └── ec2/           # EC2 instance module
+    ├── vpc/          # VPC module
+    ├── subnet/       # Subnet module
+    ├── IGW/          # Internet Gateway module
+    ├── route-table/  # Route table and association module
+    ├── SG/           # Security Group module
+    └── ec2/          # EC2 instance module
+
 
 
 Each module is responsible for a specific component of the infrastructure, following a clean and reusable structure.
 
 ## ⚙️ How to Use
-__________________________________________________________________________________
+
 1. **Clone the repository and initialize Terraform:**
 
    ```bash
@@ -70,7 +72,7 @@ ________________________________________________________________________________
 
 
 ## ✅ Prerequisites
-__________________________________________________________________________________
+
 Before using this project, ensure you have the following:
 
 - **Terraform** installed locally (`v1.6+` recommended).
@@ -98,7 +100,7 @@ Before using this project, ensure you have the following:
 ---
 
 ## 🔐 Security Notes
-________________________________________________________________________________________________
+
 - ⚠️ **Security Groups:**  
   The default security group configuration allows inbound access from `0.0.0.0/0` on **ports 22 (SSH)** and **80 (HTTP)**.  
   > This is **not recommended** for production environments. You should restrict access to trusted IP addresses only.
@@ -109,7 +111,7 @@ ________________________________________________________________________________
 ---
 
 ## 🧹 Cleanup
-_________________________________________________________________________
+
 To destroy all the resources and avoid unnecessary AWS charges, run:
 
 ```bash
