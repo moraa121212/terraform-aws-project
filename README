@@ -1,0 +1,99 @@
+🚀 Terraform AWS Infrastructure Deployment
+🧾 Project Overview
+This project automates the creation of a basic AWS infrastructure using Terraform with a modular architecture. It includes:
+
+A custom VPC
+
+A public subnet
+
+An Internet Gateway
+
+A route table with internet access
+
+A security group with open SSH (port 22) and HTTP (port 80)
+
+An EC2 instance running in the configured subnet
+
+Each component is built as an individual module to keep the configuration clean, reusable, and scalable.
+
+🧱 Infrastructure Components
+
+Component	Description
+VPC	Creates a virtual private cloud with a CIDR block of 10.0.0.0/16
+Subnet	A public subnet in AZ us-east-1a with CIDR block 10.0.1.0/24
+Internet Gateway	Enables internet access for resources inside the VPC
+Route Table	Adds a route to 0.0.0.0/0 via the IGW and associates it with the subnet
+Security Group	Allows inbound SSH (22) and HTTP (80) from anywhere
+EC2 Instance	A t2.micro instance running in the subnet, secured by the security group
+📁 Project Structure
+bash
+Copy
+Edit
+terraform_project/
+├── main.tf            # Root module calling submodules
+├── provider.tf        # AWS provider config
+└── modules/
+    ├── vpc/           # VPC module
+    ├── subnet/        # Subnet module
+    ├── IGW/           # Internet Gateway module
+    ├── route-table/   # Route table and association
+    ├── SG/            # Security Group module
+    └── ec2/           # EC2 instance module
+Each module contains its own resources and variable definitions to keep components decoupled.
+
+🔧 Prerequisites
+Terraform installed locally
+
+AWS credentials configured via:
+
+~/.aws/credentials
+
+or environment variables:
+
+bash
+Copy
+Edit
+export AWS_ACCESS_KEY_ID="your_access_key"
+export AWS_SECRET_ACCESS_KEY="your_secret_key"
+export AWS_SESSION_TOKEN="your_session_token"  # if using temporary creds
+IAM permissions to create VPCs, EC2, Security Groups, etc.
+
+⚙️ Usage
+Initialize Terraform
+
+bash
+Copy
+Edit
+terraform init
+Preview the resources
+
+bash
+Copy
+Edit
+terraform plan
+Apply the configuration
+
+bash
+Copy
+Edit
+terraform apply
+Verify on AWS Console
+
+EC2 → Instances
+
+VPC → Your VPCs, Subnets, IGW, Route Tables
+
+EC2 → Security Groups
+
+🔐 Security Notes
+The security group allows inbound access from 0.0.0.0/0 on ports 22 and 80. This is not recommended for production environments.
+
+Replace the AMI with your desired image as needed.
+
+🧹 Cleanup
+To destroy the infrastructure:
+
+bash
+Copy
+Edit
+terraform destroy
