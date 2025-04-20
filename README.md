@@ -23,6 +23,35 @@ Each component is built as an individual module to keep the configuration clean,
 - [AWS VPC Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/) 
 - [Terraform AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) 
 - [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/)
+---
+
+## ✅ Prerequisites
+
+Before using this project, ensure you have the following:
+
+- **Terraform** installed locally (`v1.6+` recommended).
+- **AWS credentials** configured using one of the following methods:
+  
+  - **AWS credentials file:**
+    ```
+    ~/.aws/credentials
+    ```
+  
+  - **Environment variables:** if using temporary credentials
+    ```bash
+    export AWS_ACCESS_KEY_ID="your_access_key"
+    export AWS_SECRET_ACCESS_KEY="your_secret_key"
+    export AWS_SESSION_TOKEN="your_session_token"  
+    ```
+
+- **IAM permissions** that allow creating:
+  - VPCs
+  - Subnets
+  - Internet Gateways
+  - Security Groups
+  - EC2 Instances
+
+---
 
 ## Project Structure
 
@@ -51,7 +80,8 @@ Each module is responsible for a specific component of the infrastructure, follo
    cd terraform-aws-project
    terraform init && terraform plan && terraform apply
 
-   You will be prompted to confirm before applying the infrastructure. Type yes to proceed.
+   # You will be prompted to confirm before applying the infrastructure. Type yes to proceed.
+   ```
 
 ## 📤 Deployment Output
 
@@ -71,39 +101,11 @@ ________________________________________________________________________________
 
 
 
-## ✅ Prerequisites
-
-Before using this project, ensure you have the following:
-
-- **Terraform** installed locally (`v1.6+` recommended).
-- **AWS credentials** configured using one of the following methods:
-  
-  - **AWS credentials file:**
-    ```
-    ~/.aws/credentials
-    ```
-  
-  - **Environment variables:**
-    ```bash
-    export AWS_ACCESS_KEY_ID="your_access_key"
-    export AWS_SECRET_ACCESS_KEY="your_secret_key"
-    export AWS_SESSION_TOKEN="your_session_token"  # Only if using temporary credentials
-    ```
-
-- **IAM permissions** that allow creating:
-  - VPCs
-  - Subnets
-  - Internet Gateways
-  - Security Groups
-  - EC2 Instances
-
----
-
 ## 🔐 Security Notes
 
 - ⚠️ **Security Groups:**  
   The default security group configuration allows inbound access from `0.0.0.0/0` on **ports 22 (SSH)** and **80 (HTTP)**.  
-  > This is **not recommended** for production environments. You should restrict access to trusted IP addresses only.
+  >Note: This is **not recommended** for production environments. This is just for testing `now`.
 
 - 🖼️ **Custom AMI:**  
   You may replace the default Amazon Machine Image (AMI) with your preferred one, depending on the OS or region.
@@ -113,8 +115,8 @@ Before using this project, ensure you have the following:
 ## 🧹 Cleanup
 
 To destroy all the resources and avoid unnecessary AWS charges, run:
+-  Always review the plan before confirming destruction 😉.
 
 ```bash
 terraform destroy
-> Always review the plan before confirming destruction.
-
+```
