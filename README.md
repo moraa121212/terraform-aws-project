@@ -15,6 +15,7 @@ The setup includes a fully functional environment with:
 - EC2 instance running in the configured subnet.
  
 Each component is built as an individual module to keep the configuration clean, reusable, and scalable.
+![alt text](Terraform-project.gif)
 ## 📘 Documentation Used
 
 - [Terraform Documentation](https://www.terraform.io/docs) 
